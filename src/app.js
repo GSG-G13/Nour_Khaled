@@ -1,11 +1,11 @@
-
 const express = require("express");
-const path = require("path")
+const path = require("path");
 const app = express();
 const PORT = 3003;
 
 app.listen(PORT, () => {
   console.log(`hello Nour & Khaled localhost:${PORT}`);
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -30,5 +30,4 @@ app.use((err, req, res, next) => {
   res
     .status(500)
     .sendFile(path.join(__dirname, "..", "public", "html", "500.html"));
-
 });
