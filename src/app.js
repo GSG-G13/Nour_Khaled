@@ -2,22 +2,20 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = 3005;
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+const PORT = 3003;
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
+ 
 
-app.get('/filter/:value',(req,res)=>{
-  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=b9da8a8928ade30c5680978edd9a4330&query=${req.params.value}`)
-  .then((result)=>result.json())
-  .then((result)=>res.send(result))
-})
+app.get('/movie/:value',(req,res)=>{
+  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=b9da8a8928ade30c5680978edd9a4330&query=${req.params}`)
+  .then((result)=> result.json())
+  .then((result)=> res.send(result))
+});
 
 app.use((req, res) => {
   res
