@@ -14,9 +14,14 @@ app.get('/', (req, res) => {
 });
 
 app.post('/search', (req, res) => {
-  console.log(req.body.value);
-  res.redirect('/');
+  res.redirect(`/filter/${req.body.value}`);
 });
+
+app.get('/filter/:value',(req,res)=>{
+  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=b9da8a8928ade30c5680978edd9a4330&query=${req.params.value}`).then((result)=>result.json()).then((result)=>console.log(result))
+  res.redirect("/");
+  res.end()
+})
 
 app.use((req, res) => {
   res
