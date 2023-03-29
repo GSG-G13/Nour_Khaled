@@ -185,7 +185,7 @@ section:after {
   top: 155px;
 }
 
-section form {
+section .form {
   background: #111;
   background: linear-gradient(#19182b, #000000);
   border: 1px solid #000;
@@ -281,11 +281,14 @@ section button:active {
 }
 .content-search {
   margin-top: 20vh;
-  margin-left: 64px;
+  flex-wrap: wrap;
   display: flex;
   padding: 0 1rem;
   justify-content: center;
   gap: 1rem;
+}
+.content-search .mov-card{
+  width: 24%;
 }
 .fa-solid {
   cursor: pointer;

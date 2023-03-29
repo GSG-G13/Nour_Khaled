@@ -1,7 +1,7 @@
 const searchIcon = document.querySelector(".fa-magnifying-glass");
 const search = document.querySelector(".search");
 const closeSearch = document.querySelector(".del");
-
+const searchContent = document.querySelector(".content-search");
 searchIcon.addEventListener("click",()=>{
   search.classList.toggle("hide")
   searchIcon.classList.toggle("active")
@@ -17,7 +17,7 @@ const createEle = (element, className) => {
   ele.className = className;
   return ele;
 };
-const createDom = (response,thePlace) => {
+const createDom = (response) => {
   response.forEach((element) => {
     const movCard = createEle('div', 'mov-card');
     const movImg = createEle('img', 'mov-img');
@@ -33,8 +33,17 @@ const createDom = (response,thePlace) => {
     movYear.textContent = element.release_date.slice(0, 4);
     movDetails.appendChild(movTitle);
     movDetails.appendChild(movYear);
-    thePlace.prepend(movCard);
+    searchContent.append(movCard);
   });
 };
 
 
+let input = document.querySelector("#input");
+let sendBtn = document.querySelector(".send-btn");
+
+sendBtn.addEventListener("click", ()=>{
+  let inputValue = input.value;
+  fetch(`/movie/${inputValue}`)
+ .then(result => result.json())
+ .then(result => createDom(result.results));
+ })
