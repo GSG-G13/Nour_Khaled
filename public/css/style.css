@@ -104,10 +104,10 @@ select {
 .landing .face-landing {
   background-image:url(../assets/1.jpg);
   background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
   height: 50vh;
-  background-size: 100% 50vh;
-  padding-left: 6%;
+  padding: 50px 0 50px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -123,6 +123,7 @@ select {
 h2 {
   color: aqua;
   font-size: xx-large;
+  margin-top: 50px;
 }
 .move-card {
   width: 250px;
@@ -134,16 +135,17 @@ h2 {
     color: aliceblue;
 }
 .most-pop {
-  padding-left: 2rem;
-  overflow-x: hidden;
+  padding: 30px 50px;
 }
 .filter-title {
   color: aliceblue;
-  font-size: 3rem;
-  font-family: initial;
+  font-size: 2rem;
+  margin-bottom: 30px;
 }
 .photo {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
 }
 .st-year {
@@ -153,8 +155,8 @@ h2 {
 }
 section {
   background: radial-gradient(#192640f5, #0b0c0e);
-  height: 100%;
-  position: fixed;
+  height: 321vh;
+  position: absolute;
   text-align: center;
   width: 100%;
   z-index: 1;
@@ -280,15 +282,18 @@ section button:active {
   }
 }
 .content-search {
-  margin-top: 20vh;
-  flex-wrap: wrap;
-  display: flex;
-  padding: 0 1rem;
-  justify-content: center;
-  gap: 1rem;
+    flex-wrap: wrap;
+    display: flex;
+    padding: 0 1rem;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-left: 63px;
+    padding: 0 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .content-search .mov-card{
-  width: 24%;
+  width: 23%;
 }
 .fa-solid {
   cursor: pointer;
@@ -301,8 +306,7 @@ section button:active {
 }
 .movies {
   position: absolute;
-  top: 10px;
-  left: 2rem;
+  top: 23px;
   font-size: x-large;
   color: #00ffa2;
   z-index: 3;
@@ -320,4 +324,21 @@ section button:active {
 .active {
   color: #6484d1;
   filter: drop-shadow(-2px 3px 1px #1157ff);
+}
+.mov-title{
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
+  text-align: start;
+  padding: 1rem 0;
+}
+.mov-year{
+  overflow-wrap: break-word;
+    font-size: 1.125rem;
+    color: aliceblue;
+    width: 41%;
+    padding: 1rem 0;
+    text-align: end;
 }

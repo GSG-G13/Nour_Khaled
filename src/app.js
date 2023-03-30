@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
  
 
 app.get('/movie/:value',(req,res)=>{
-  fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=b9da8a8928ade30c5680978edd9a4330&query=${req.params}`)
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=b9da8a8928ade30c5680978edd9a4330&query=${req.params.value}`)
   .then((result)=> result.json())
   .then((result)=> res.send(result))
 });
