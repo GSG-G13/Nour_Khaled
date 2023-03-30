@@ -3,6 +3,9 @@ const search = document.querySelector(".search");
 const closeSearch = document.querySelector(".del");
 const searchContent = document.querySelector(".content-search");
 const photo = document.querySelector(".photo");
+let titleFace= document.querySelector(".face-landing h2");
+let yearFace = document.querySelector(".face-landing .year");
+let paragraphFace = document.querySelector(".face-landing p");
 
 searchIcon.addEventListener("click",()=>{
   search.classList.toggle("hide")
@@ -34,7 +37,8 @@ const createDom = (response, thePlace) => {
     movCard.appendChild(movImg)
     movCard.appendChild(movDetails)
     const movTitle = createEle('p', 'mov-title');
-    movTitle.textContent = element.title;
+    let partOfTitle = element.title.split(":").slice(0,1);
+    movTitle.textContent = partOfTitle;
     const movYear = createEle('p', 'mov-year');
     movYear.textContent = element.release_date.slice(0, 4);
     movDetails.appendChild(movTitle);
@@ -56,6 +60,11 @@ sendBtn.addEventListener("click", ()=>{
  input.value = ""
  })
 
- fetch(`https://api.themoviedb.org/3/search/movie?api_key=b9da8a8928ade30c5680978edd9a4330&query=all`)
+ fetch(`https://api.themoviedb.org/3/movie/popular?api_key=b9da8a8928ade30c5680978edd9a4330`)
 .then(result => result.json())
-.then(result => createDom(result.results,photo));
+.then(result => {
+  yearFace.textContent=result.results[0].release_date.slice(0, 4);
+  titleFace.textContent=result.results[0].title.split(":").slice(0,1);
+  paragraphFace.textContent=result.results[0].overview;
+  createDom(result.results,photo);
+});
