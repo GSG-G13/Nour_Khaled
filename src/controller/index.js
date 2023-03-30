@@ -1,3 +1,4 @@
+const path =require("path");
 const indexPage = (req, res) => {
     res.sendFile(path.join(dirname, "..", "public", "index.html"));
   }
@@ -9,11 +10,11 @@ const getAPI = (req,res)=>{
 const err404 =(req, res) => {
     res
       .status(404)
-      .sendFile(path.join(__dirname, '..', 'public', 'html', '404.html'));
+      .sendFile(path.join(__dirname, '..', '..','public', 'html', '404.html'));
   }
 const err500 =(req, res) => {
     res
       .status(500)
-      .sendFile(path.join(__dirname, '..', 'public', 'html', '500.html'));
+      .sendFile(path.join(__dirname, '..', '..','public', 'html', '500.html'));
   }
 module.exports = { indexPage,getAPI,err404,err500 }
