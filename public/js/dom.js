@@ -6,6 +6,8 @@ const photo = document.querySelector(".photo");
 let titleFace= document.querySelector(".face-landing h2");
 let yearFace = document.querySelector(".face-landing .year");
 let paragraphFace = document.querySelector(".face-landing p");
+let input = document.querySelector("#input");
+let sendBtn = document.querySelector(".send-btn");
 
 searchIcon.addEventListener("click",()=>{
   search.classList.toggle("hide")
@@ -47,11 +49,6 @@ const createDom = (response, thePlace) => {
   });
 };
 
-
-let input = document.querySelector("#input");
-let sendBtn = document.querySelector(".send-btn");
-
-
 sendBtn.addEventListener("click", ()=>{
   let inputValue = input.value;
   fetch(`/movie/${inputValue}`)
@@ -67,4 +64,5 @@ sendBtn.addEventListener("click", ()=>{
   titleFace.textContent=result.results[0].title.split(":").slice(0,1);
   paragraphFace.textContent=result.results[0].overview;
   createDom(result.results,photo);
+  search.style.height=`${document.body.clientHeight}px`;
 });
