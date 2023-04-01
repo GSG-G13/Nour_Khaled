@@ -54,6 +54,7 @@ sendBtn.addEventListener("click", ()=>{
   fetch(`/movie/${inputValue}`)
  .then(result => result.json())
  .then(result => createDom(result.results,searchContent));
+ search.style=`height:${document.body.clientHeight}px;position:absolute;`;
  input.value = ""
  })
 
@@ -64,5 +65,8 @@ sendBtn.addEventListener("click", ()=>{
   titleFace.textContent=result.results[0].title.split(":").slice(0,1);
   paragraphFace.textContent=result.results[0].overview;
   createDom(result.results,photo);
-  search.style.height=`${document.body.clientHeight}px`;
+})
+.catch((error) => {
+  console.error(error);
+  throw new Error("There was an error *dom* fetching data from the API.");
 });

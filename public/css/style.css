@@ -168,13 +168,13 @@ section {
   top: 0;
   background: radial-gradient(#192640f5, #0b0c0e);
   background-attachment: fixed;
-  position: absolute;
+  position: fixed;
   text-align: center;
   width: 100%;
   z-index: 1;
   right: 0;
   top: 0;
-  min-height: 230vh;
+  min-height:100vh ;
 }
 
 section:before,
